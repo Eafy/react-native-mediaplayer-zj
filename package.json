@@ -1,0 +1,25 @@
+{
+  "name": "react-native-mediaplayer-zj",
+  "version": "1.0.0",
+  "description": "ZJ Media Player SDK for React Native at iOS & Android，Supported H.264、Hevc、AAC and other formats.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eafy/react-native-mediaplayer-zj.git"
+  },
+  "keywords": [
+    "ZJ",
+    "Media Player",
+    "React Native",
+    "Video Player"
+  ],
+  "author": "Eafy",
+  "license": "MIT",
+  "devDependencies": {
+      "react": "16.13.1",
+      "react-native": "^0.63.2"
+  }
+}
