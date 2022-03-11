@@ -28,19 +28,21 @@ RCT_CUSTOM_VIEW_PROPERTY(image, NSDictionary, RNZJGLMonitor) {
 }
 
 - (NSDictionary *)constantsToExport {
-    return @{@"RatioType_Auto": @0,
-             @"RatioType_1_1": @1,
-             @"RatioType_16_9": @2,
-             @"RatioType_4_3": @3
+    return @{@"RatioType_ScaleAspectFit": @(ZJGLMonitorDisplayRatioType_ScaleAspectFit),
+             @"RatioType_ScaleToFill": @(ZJGLMonitorDisplayRatioType_ScaleToFill),
+             @"RatioType_ScaleAspectFill": @(ZJGLMonitorDisplayRatioType_ScaleAspectFill),
+             @"RatioType_1_1": @(ZJGLMonitorDisplayRatioType_1_1),
+             @"RatioType_16_9": @(ZJGLMonitorDisplayRatioType_16_9),
+             @"RatioType_4_3": @(ZJGLMonitorDisplayRatioType_4_3)
         
     };
 }
 
-RCT_EXPORT_METHOD(viewInfo:(nonnull NSNumber *)viewTag success:(RCTPromiseResolveBlock)success failure:(RCTPromiseRejectBlock)failure) {
+RCT_EXPORT_METHOD(viewInfo:(nonnull NSNumber *)viewTag) {
     [self.bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *,UIView *> *viewRegistry) {
         RNZJGLMonitor *view = (RNZJGLMonitor *)viewRegistry[viewTag];
-        if ([view isKindOfClass:[RNZJGLMonitor class]]) {
-            success(@{@"viewId": @(view.hash)});
+        if ([view isKindOfClass:[RNZJGLMonitor class]] && view.onViewInfo) {
+            view.onViewInfo(@{@"viewId": @(view.hash)});
         }
     }];
 }

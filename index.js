@@ -1,6 +1,6 @@
 
 import { NativeModules } from 'react-native';
+import _GLMonitor from './js/GLMonitor';
 
-const { RNGoogleMapXlx } = NativeModules;
-
-export default RNGoogleMapXlx;
+export const Monitor = _GLMonitor;
+export const MediaPlayer = NativeModules.MediaPlayer;;

@@ -12,6 +12,6 @@ target 'RNMediaPlayer' do
     flipper_post_install(installer)
   end
   
-  pod 'ZJMediaPlayer', '~> 1.2.1'
+  pod 'ZJMediaPlayer'
 
 end

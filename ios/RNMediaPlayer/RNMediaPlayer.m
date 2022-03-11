@@ -68,7 +68,6 @@ RCT_EXPORT_MODULE(MediaPlayer);
 - (ZJMediaPlayer *)mediaPlayer {
     if (!_mediaPlayer) {
         _mediaPlayer = [[ZJMediaPlayer alloc] init];
-        _mediaPlayer.delegate = self;
     }
     return _mediaPlayer;
 }
@@ -85,7 +84,7 @@ RCT_EXPORT_METHOD(configWithKey:(NSString *)key secret:(NSString *)secret cb:(RC
 }
 
 RCT_EXPORT_METHOD(isAuthOK:(RCTResponseSenderBlock)cb) {
-//    cb(@[@([ZJAuthManager shared].isAuthOK)]);
+    cb(@[@([[ZJAuthManager shared] isAuthOK])]);
 }
 
 #pragma mark -
@@ -95,15 +94,10 @@ RCT_EXPORT_METHOD(playerId:(RCTResponseSenderBlock)cb) {
 }
 
 RCT_EXPORT_METHOD(addMonitor:(NSInteger)viewId) {
-    __weak typeof(self) weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        RNZJGLMonitor *view = [[RNMonitorManager shared] getMonitor:viewId];
-        if (view) {
-            typeof(self) strongSelf = weakSelf;
-            strongSelf.mediaPlayer.glMonitor = view;
-            view.mediaPlayer = strongSelf.mediaPlayer;
-        }
-    });
+    RNZJGLMonitor *view = [[RNMonitorManager shared] getMonitor:viewId];
+    if (!view) return;
+    self.mediaPlayer.glMonitor = view;
+    view.mediaPlayer = self.mediaPlayer;
 }
 
 RCT_EXPORT_METHOD(start:(NSString *)url) {
