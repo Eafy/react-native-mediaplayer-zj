@@ -142,8 +142,8 @@ RCT_EXPORT_METHOD(setMediaCacheTime:(NSInteger)cacheTime pursueTime:(NSInteger)p
     [self.mediaPlayer setMediaCacheTime:cacheTime pursueTime:pursueTime];
 }
 
-RCT_EXPORT_METHOD(setDenoiseLevel:(NSInteger)nLevel) {
-    [self.mediaPlayer setDenoiseLevel:nLevel];
+RCT_EXPORT_METHOD(setDenoiseLevel:(NSInteger)nLevel gainVolume:(CGFloat)gainVolume) {
+    [self.mediaPlayer setDenoiseLevel:nLevel gainVolume:gainVolume];
 }
 
 RCT_EXPORT_METHOD(setMediaSyncMode:(BOOL)sync) {

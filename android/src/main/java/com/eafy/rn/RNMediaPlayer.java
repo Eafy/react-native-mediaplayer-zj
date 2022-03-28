@@ -142,8 +142,8 @@ public class RNMediaPlayer extends ReactContextBaseJavaModule implements ZJMedia
     }
 
     @ReactMethod
-    public void setDenoiseLevel(int nLevel) {
-        mediaPlayer().setDenoiseLevel(nLevel);
+    public void setDenoiseLevel(int nLevel, float gainVolume) {
+        mediaPlayer().setDenoiseLevel(nLevel, gainVolume);
     }
 
     @ReactMethod
